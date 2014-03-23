@@ -7,7 +7,7 @@ See http://javamelody.googlecode.com
 
 Continuous integration: https://javamelody.ci.cloudbees.com/job/liferay-javamelody/
 
-License LGPL, http://www.gnu.org/licenses/lgpl-3.0.txt
+License ASL, http://www.apache.org/licenses/LICENSE-2.0
 
 Please submit github pull requests and github issues.
 
