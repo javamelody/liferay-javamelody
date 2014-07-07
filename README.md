@@ -18,7 +18,7 @@ Downloading and Installing the plugin:
  - copy the file into the "deploy" directory of your Liferay server and wait a few seconds
  - Liferay automatically deploys the file and removes it from "deploy" 
  - open http://localhost:8080/monitoring in a browser
- - Authentication and portal "Administrator" role is required to access this page.
+ - Authentication and portal "Administrator" role are required to access this monitoring page.
 
 
 Compiling and Installing the plugin:
