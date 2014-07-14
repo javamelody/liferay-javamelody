@@ -25,8 +25,8 @@ Compiling and Installing the plugin:
 ---------------------------------------
  - Install maven
  - Clone the repository
- - Compile and test the code, then generate the jar:
+ - Compile and test the code, then generate the war:
 	-> run "mvn clean install" command in your terminal
- - copy the war file (in the new generated target folder) into the "deploy" directory of your Liferay server and wait a few seconds
+ - copy the war file (from the new generated target folder) into the "deploy" directory of your Liferay server and wait a few seconds
  - Liferay automatically deploys the file and removes it from "deploy" 
  - open http://localhost:8080/monitoring in a browser
