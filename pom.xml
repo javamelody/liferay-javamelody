@@ -10,7 +10,7 @@
 
 	<name>Liferay JavaMelody Plugin</name>
 	<description>JavaMelody Monitoring in Liferay.</description>
-	<url>http://javamelody.googlecode.com</url>
+	<url>https://github.com/javamelody/javamelody/wiki</url>
 	<inceptionYear>2013</inceptionYear>
 	<prerequisites>
 		<maven>3.0.4</maven>
@@ -25,7 +25,7 @@
 	</developers>
 	<organization>
 		<name>Emeric Vernat</name>
-		<url>http://javamelody.googlecode.com</url>
+		<url>https://github.com/javamelody/javamelody/wiki</url>
 	</organization>
 	<licenses>
 		<license>

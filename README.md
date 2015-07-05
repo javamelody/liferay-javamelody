@@ -3,7 +3,7 @@ liferay-javamelody
 
 Plugin for JavaMelody to monitor performance in a [Liferay](http://www.liferay.com/) server 6.1 or later.
 
-See http://javamelody.googlecode.com
+See https://github.com/javamelody/javamelody/wiki
 
 Continuous integration: https://javamelody.ci.cloudbees.com/job/liferay-javamelody/
 
