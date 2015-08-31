@@ -36,14 +36,14 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git@github.com:evernat/liferay-javamelody.git</connection>
-		<developerConnection>scm:git:git@github.com:evernat/liferay-javamelody.git</developerConnection>
-		<url>https://github.com/evernat/liferay-javamelody</url>
+		<connection>scm:git:git@github.com:javamelody/liferay-javamelody.git</connection>
+		<developerConnection>scm:git:git@github.com:javamelody/liferay-javamelody.git</developerConnection>
+		<url>https://github.com/javamelody/liferay-javamelody</url>
 		<tag>HEAD</tag>
 	</scm>
 	<issueManagement>
 		<system>GITHUB</system>
-		<url>https://github.com/evernat/liferay-javamelody/issues</url>
+		<url>https://github.com/javamelody/liferay-javamelody/issues</url>
 	</issueManagement>
 	<ciManagement>
 		<system>Cloudbees</system>
