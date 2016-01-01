@@ -50,8 +50,8 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 
 	/** {@inheritDoc} */
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		if (!(request instanceof HttpServletRequest)) {
 			super.doFilter(request, response, chain);
 			return;
@@ -73,7 +73,7 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 
 		super.doFilter(request, response, chain);
 	}
-	
+
 	private boolean isAdmin(HttpServletRequest httpRequest) throws PortalException, SystemException {
 		final long userId = PortalUtil.getUserId(httpRequest);
 		final long companyId = PortalUtil.getDefaultCompanyId();
