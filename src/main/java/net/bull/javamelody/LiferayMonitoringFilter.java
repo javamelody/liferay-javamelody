@@ -43,6 +43,9 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	/** {@inheritDoc} */
 	@Override
 	public void init(FilterConfig config) throws ServletException {
+		// rewrap datasources in GlobalNamingResources with ResourceLink in context.xml
+		System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.REWRAP_DATASOURCES.getCode(), Boolean.TRUE.toString());
+
 		super.init(config);
 
 		LOG.debug("JavaMelody is monitoring Liferay");
