@@ -14,11 +14,7 @@ Please submit github pull requests and github issues.
 
 Downloading and Installing the plugin:
 ---------------------------------------
- - download the latest liferay-javamelody-hook war file from [releases](../../releases)
- - copy the file into the "deploy" directory of your Liferay server and wait a few seconds
- - Liferay automatically deploys the file and removes it from "deploy" 
- - open http://localhost:8080/monitoring in a browser
- - Authentication and portal "Administrator" role are required to access this monitoring page.
+ - See [this page](https://github.com/javamelody/javamelody/wiki/LiferayPlugin)
 
 
 Compiling and Installing the plugin:
