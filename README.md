@@ -26,3 +26,4 @@ Compiling and Installing the plugin:
  - copy the war file (from the new generated target folder) into the "deploy" directory of your Liferay server and wait a few seconds
  - Liferay automatically deploys the file and removes it from "deploy" 
  - open http://localhost:8080/monitoring in a browser
+ - See [this page](https://github.com/javamelody/javamelody/wiki/LiferayPlugin) for SQL monitoring and more
