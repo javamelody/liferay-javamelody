@@ -43,8 +43,19 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	/** {@inheritDoc} */
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		// rewrap datasources in GlobalNamingResources with ResourceLink in context.xml
-		System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.REWRAP_DATASOURCES.getCode(), Boolean.TRUE.toString());
+		// rewrap datasources in GlobalNamingResources with ResourceLink in
+		// context.xml
+		System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.REWRAP_DATASOURCES.getCode(),
+				Boolean.TRUE.toString());
+
+		if (Parameters.getParameter(Parameter.SQL_TRANSFORM_PATTERN) == null) {
+			// regexp pour agréger les paramètres bindés dans les critères
+			// de requêtes SQL tels que "in (?, ?, ?, ?)" et ainsi pour éviter
+			// que ces requêtes ayant un nombre variable de paramètres soient
+			// considérées comme différentes ;
+			// de fait cela agrège aussi les values des inserts
+			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.SQL_TRANSFORM_PATTERN, "\\([\\?, ]+\\)");
+		}
 
 		super.init(config);
 
