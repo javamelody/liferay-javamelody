@@ -56,11 +56,13 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 			// de fait cela agrège aussi les values des inserts
 			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.SQL_TRANSFORM_PATTERN, "\\([\\?, ]+\\)");
 		}
-		
+
 		if (Parameters.getParameter(Parameter.DISPLAYED_COUNTERS) == null) {
-			// disable jsp counter to fix https://github.com/javamelody/liferay-javamelody/issues/5,
+			// disable jsp counter to fix
+			// https://github.com/javamelody/liferay-javamelody/issues/5,
 			// the jsp counter does not display anything anyway.
-			// In consequence, jsf, job, ejb, jpa, spring, guice are also disabled.
+			// In consequence, jsf, job, ejb, jpa, spring, guice are also
+			// disabled.
 			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.DISPLAYED_COUNTERS, "http,sql,error,log");
 		}
 
