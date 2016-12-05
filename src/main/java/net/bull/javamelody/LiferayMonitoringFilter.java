@@ -54,7 +54,7 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 			// que ces requêtes ayant un nombre variable de paramètres soient
 			// considérées comme différentes ;
 			// de fait cela agrège aussi les values des inserts
-			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.SQL_TRANSFORM_PATTERN, "\\([\\?, ]+\\)");
+			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.SQL_TRANSFORM_PATTERN.getCode(), "\\([\\?, ]+\\)");
 		}
 
 		if (Parameters.getParameter(Parameter.DISPLAYED_COUNTERS) == null) {
@@ -63,7 +63,7 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 			// the jsp counter does not display anything anyway.
 			// In consequence, jsf, job, ejb, jpa, spring, guice are also
 			// disabled.
-			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.DISPLAYED_COUNTERS, "http,sql,error,log");
+			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.DISPLAYED_COUNTERS.getCode(), "http,sql,error,log");
 		}
 
 		super.init(config);
