@@ -42,6 +42,12 @@ import com.liferay.portal.util.PortalUtil;
 public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	/** {@inheritDoc} */
 	@Override
+	public String getApplicationType() {
+		return "Liferay";
+	}
+
+	/** {@inheritDoc} */
+	@Override
 	public void init(FilterConfig config) throws ServletException {
 		// rewrap datasources in GlobalNamingResources with ResourceLink in
 		// context.xml
