@@ -1,7 +1,7 @@
 liferay-javamelody
 =========================
 
-Plugin for JavaMelody to monitor performance in a [Liferay](http://www.liferay.com/) server 6.1 or later.
+Plugin for JavaMelody to monitor performance in a [Liferay](http://www.liferay.com/) server 7.0 or later.
 
 See https://github.com/javamelody/javamelody/wiki
 
