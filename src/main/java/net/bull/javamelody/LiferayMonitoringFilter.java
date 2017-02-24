@@ -40,6 +40,8 @@ import com.liferay.portal.kernel.util.PortalUtil;
  * @author Emeric Vernat
  */
 public class LiferayMonitoringFilter extends PluginMonitoringFilter {
+	private boolean liferay7;
+
 	/** {@inheritDoc} */
 	@Override
 	public String getApplicationType() {
@@ -106,8 +108,23 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	}
 
 	private boolean isAdmin(HttpServletRequest httpRequest) throws PortalException, SystemException {
-		final long userId = PortalUtil.getUserId(httpRequest);
-		final long companyId = PortalUtil.getDefaultCompanyId();
-		return UserLocalServiceUtil.hasRoleUser(companyId, RoleConstants.ADMINISTRATOR, userId, true);
+		try {
+			if (!liferay7) {
+				// for liferay 6
+				final long userId = com.liferay.portal.util.PortalUtil.getUserId(httpRequest);
+				final long companyId = com.liferay.portal.util.PortalUtil.getDefaultCompanyId();
+				return com.liferay.portal.service.UserLocalServiceUtil.hasRoleUser(companyId,
+						com.liferay.portal.model.RoleConstants.ADMINISTRATOR, userId, true);
+			}
+		} catch (final NoClassDefFoundError e) {
+			liferay7 = true;
+		}
+		if (liferay7) {
+			// for liferay 7
+			final long userId = PortalUtil.getUserId(httpRequest);
+			final long companyId = PortalUtil.getDefaultCompanyId();
+			return UserLocalServiceUtil.hasRoleUser(companyId, RoleConstants.ADMINISTRATOR, userId, true);
+		}
+		return false;
 	}
 }

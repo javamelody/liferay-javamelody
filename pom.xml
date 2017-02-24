@@ -5,7 +5,7 @@
 
 	<groupId>net.bull.javamelody</groupId>
 	<artifactId>liferay-javamelody-hook</artifactId>
-	<version>1.64.0</version>
+	<version>1.63.1</version>
 	<packaging>war</packaging>
 
 	<name>Liferay JavaMelody Plugin</name>
@@ -61,8 +61,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -137,15 +137,16 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>com.liferay.portal</groupId>
-		    <artifactId>com.liferay.portal.kernel</artifactId>
-		    <version>2.21.0</version>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>portal-service</artifactId>
+			<version>6.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		  	<groupId>org.quartz-scheduler</groupId>
-		  	<artifactId>quartz</artifactId>
-			<version>2.2.3</version>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>com.liferay.portal.kernel</artifactId>
+			<version>2.21.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
