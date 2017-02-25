@@ -5,7 +5,7 @@
 
 	<groupId>net.bull.javamelody</groupId>
 	<artifactId>liferay-javamelody-hook</artifactId>
-	<version>1.63.1</version>
+	<version>1.63.1.0</version>
 	<packaging>war</packaging>
 
 	<name>Liferay JavaMelody Plugin</name>
@@ -136,12 +136,14 @@
 			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- portal-service provided in Liferay 6.x -->
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>
 			<version>6.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- portal kernel provided in Liferay 7.x -->
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
