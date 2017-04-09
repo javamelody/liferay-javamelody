@@ -39,6 +39,9 @@ import com.liferay.portal.kernel.util.PortalUtil;
  * @author Emeric Vernat
  */
 public class LiferayMonitoringFilter extends PluginMonitoringFilter {
+	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Boolean
+			.parseBoolean(System.getProperty("javamelody.plugin-authentication-disabled"));
+
 	private boolean liferay7;
 
 	/** {@inheritDoc} */
@@ -90,7 +93,7 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 		}
 		final HttpServletRequest httpRequest = (HttpServletRequest) request;
 		final HttpServletResponse httpResponse = (HttpServletResponse) response;
-		if (httpRequest.getRequestURI().equals(getMonitoringUrl(httpRequest))) {
+		if (!PLUGIN_AUTHENTICATION_DISABLED && httpRequest.getRequestURI().equals(getMonitoringUrl(httpRequest))) {
 			try {
 				if (!isAdmin(httpRequest)) {
 					LOG.debug("Forbidden access to monitoring from " + request.getRemoteAddr());
