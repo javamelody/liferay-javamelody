@@ -94,6 +94,9 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 		final HttpServletRequest httpRequest = (HttpServletRequest) request;
 		final HttpServletResponse httpResponse = (HttpServletResponse) response;
 		if (!PLUGIN_AUTHENTICATION_DISABLED && httpRequest.getRequestURI().equals(getMonitoringUrl(httpRequest))) {
+			if (isRumMonitoring(httpRequest, httpResponse)) {
+				return;
+			}
 			try {
 				if (!isAdmin(httpRequest)) {
 					LOG.debug("Forbidden access to monitoring from " + request.getRemoteAddr());
