@@ -39,8 +39,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
  * @author Emeric Vernat
  */
 public class LiferayMonitoringFilter extends PluginMonitoringFilter {
-	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Boolean
-			.parseBoolean(System.getProperty("javamelody.plugin-authentication-disabled"));
+	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Parameter.PLUGIN_AUTHENTICATION_DISABLED.getValueAsBoolean();
 
 	private boolean liferay7;
 
