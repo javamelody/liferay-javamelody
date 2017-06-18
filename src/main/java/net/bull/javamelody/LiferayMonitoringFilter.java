@@ -55,32 +55,29 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	public void init(FilterConfig config) throws ServletException {
 		// rewrap datasources in GlobalNamingResources with ResourceLink in
 		// context.xml
-		System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.REWRAP_DATASOURCES.getCode(),
-				Boolean.TRUE.toString());
+		Parameter.REWRAP_DATASOURCES.setValue(Boolean.TRUE.toString());
 
-		if (Parameters.getParameter(Parameter.SQL_TRANSFORM_PATTERN) == null) {
+		if (Parameter.SQL_TRANSFORM_PATTERN.getValue() == null) {
 			// regexp pour agréger les paramètres bindés dans les critères
 			// de requêtes SQL tels que "in (?, ?, ?, ?)" et ainsi pour éviter
 			// que ces requêtes ayant un nombre variable de paramètres soient
 			// considérées comme différentes ;
 			// de fait cela agrège aussi les values des inserts
-			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.SQL_TRANSFORM_PATTERN.getCode(),
-					"\\([\\?, ]+\\)");
+			Parameter.SQL_TRANSFORM_PATTERN.setValue("\\([\\?, ]+\\)");
 		}
 
-		if (Parameters.getParameter(Parameter.DISPLAYED_COUNTERS) == null) {
+		if (Parameter.DISPLAYED_COUNTERS.getValue() == null) {
 			// disable jsp counter to fix
 			// https://github.com/javamelody/liferay-javamelody/issues/5,
 			// the jsp counter does not display anything anyway.
 			// In consequence, jsf, job, ejb, jpa, spring, guice are also
 			// disabled.
-			System.setProperty(Parameters.PARAMETER_SYSTEM_PREFIX + Parameter.DISPLAYED_COUNTERS.getCode(),
-					"http,sql,error,log");
+			Parameter.DISPLAYED_COUNTERS.setValue("http,sql,error,log");
 		}
 
 		super.init(config);
 
-		LOG.debug("JavaMelody is monitoring Liferay");
+		logForDebug("JavaMelody is monitoring Liferay");
 	}
 
 	/** {@inheritDoc} */
@@ -99,7 +96,7 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 			}
 			try {
 				if (!isAdmin(httpRequest)) {
-					LOG.debug("Forbidden access to monitoring from " + request.getRemoteAddr());
+					logForDebug("Forbidden access to monitoring from " + request.getRemoteAddr());
 					httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Forbidden access");
 					httpResponse.flushBuffer();
 					return;
