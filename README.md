@@ -27,3 +27,4 @@ Compiling and Installing the plugin:
  - Liferay automatically deploys the file and removes it from "deploy" 
  - open http://localhost:8080/monitoring in a browser
  - See [this page](https://github.com/javamelody/javamelody/wiki/LiferayPlugin) for SQL monitoring and more
+
