@@ -35,7 +35,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 
 /**
  * Filter of monitoring JavaMelody for Liferay.
- * 
+ *
  * @author Emeric Vernat
  */
 public class LiferayMonitoringFilter extends PluginMonitoringFilter {
