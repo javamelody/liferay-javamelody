@@ -6,7 +6,7 @@
 
 	<groupId>net.bull.javamelody</groupId>
 	<artifactId>liferay-javamelody-hook</artifactId>
-	<version>1.93.0.0</version>
+	<version>1.94.0.0</version>
 	<packaging>war</packaging>
 
 	<name>Liferay JavaMelody Plugin</name>
@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>net.bull.javamelody</groupId>
 			<artifactId>javamelody-core</artifactId>
-			<version>1.93.0</version>
+			<version>1.94.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.lowagie</groupId>
