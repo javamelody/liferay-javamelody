@@ -31,6 +31,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.model.RoleConstants;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 
 /**
@@ -48,6 +49,26 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	@Override
 	public String getApplicationType() {
 		return "Liferay";
+	}
+
+	private ClassLoader useWebappClassLoader() {
+		// This is how to go around Liferay shield as said by Liferay at https://liferay.dev/b/setting-up-jndi-in-liferay-7-4
+
+		// Get the thread's class loader. You'll reinstate it after using
+		// the data source you look up using JNDI
+		final Thread thread = Thread.currentThread();
+		final ClassLoader origLoader = thread.getContextClassLoader();
+
+		// get the shielded class loader
+		final ClassLoader shieldedClassLoader = PortalClassLoaderUtil.getClassLoader();
+
+		// get the webapp class loader from it
+		final ClassLoader webappClassLoader = shieldedClassLoader.getClass().getClassLoader();
+
+		// Set webapp class loader on the thread
+		thread.setContextClassLoader(webappClassLoader);
+
+		return origLoader;
 	}
 
 	/** {@inheritDoc} */
@@ -75,7 +96,14 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 			Parameter.DISPLAYED_COUNTERS.setValue("http,sql,error,log");
 		}
 
-		super.init(config);
+
+		final ClassLoader origLoader = useWebappClassLoader();
+		try {
+			super.init(config);
+		} finally {
+			final Thread thread = Thread.currentThread();
+			thread.setContextClassLoader(origLoader);
+		}
 
 		logForDebug("JavaMelody is monitoring Liferay");
 	}
