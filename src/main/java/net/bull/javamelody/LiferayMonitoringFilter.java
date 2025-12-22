@@ -19,17 +19,17 @@ package net.bull.javamelody;
 
 import java.io.IOException;
 
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.model.RoleConstants;
+import com.liferay.portal.kernel.model.role.RoleConstants;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
@@ -42,8 +42,6 @@ import com.liferay.portal.kernel.util.PortalUtil;
 public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	private static final boolean PLUGIN_AUTHENTICATION_DISABLED = Parameter.PLUGIN_AUTHENTICATION_DISABLED
 			.getValueAsBoolean();
-
-	private boolean liferay7;
 
 	/** {@inheritDoc} */
 	@Override
@@ -138,23 +136,9 @@ public class LiferayMonitoringFilter extends PluginMonitoringFilter {
 	}
 
 	private boolean isAdmin(HttpServletRequest httpRequest) throws PortalException, SystemException {
-		try {
-			if (!liferay7) {
-				// for liferay 6
-				final long userId = com.liferay.portal.util.PortalUtil.getUserId(httpRequest);
-				final long companyId = com.liferay.portal.util.PortalUtil.getDefaultCompanyId();
-				return com.liferay.portal.service.UserLocalServiceUtil.hasRoleUser(companyId,
-						com.liferay.portal.model.RoleConstants.ADMINISTRATOR, userId, true);
-			}
-		} catch (final NoClassDefFoundError e) {
-			liferay7 = true;
-		}
-		if (liferay7) {
-			// for liferay 7
-			final long userId = PortalUtil.getUserId(httpRequest);
-			final long companyId = PortalUtil.getDefaultCompanyId();
-			return UserLocalServiceUtil.hasRoleUser(companyId, RoleConstants.ADMINISTRATOR, userId, true);
-		}
-		return false;
+		// for liferay 7 +
+		final long userId = PortalUtil.getUserId(httpRequest);
+		final long companyId = PortalUtil.getDefaultCompanyId();
+		return UserLocalServiceUtil.hasRoleUser(companyId, RoleConstants.ADMINISTRATOR, userId, true);
 	}
 }

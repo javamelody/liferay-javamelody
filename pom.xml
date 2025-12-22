@@ -6,7 +6,7 @@
 
 	<groupId>net.bull.javamelody</groupId>
 	<artifactId>liferay-javamelody-hook</artifactId>
-	<version>1.99.4.0</version>
+	<version>2.6.0.0</version>
 	<packaging>war</packaging>
 
 	<name>Liferay JavaMelody Plugin</name>
@@ -53,14 +53,24 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>liferay</id>
+			<name>Liferay Maven Repository</name>
+			<url>https://repository.liferay.com/nexus/content/repositories/public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<release>17</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -106,7 +116,7 @@
 		<dependency>
 			<groupId>net.bull.javamelody</groupId>
 			<artifactId>javamelody-core</artifactId>
-			<version>1.99.4</version>
+			<version>2.6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.lowagie</groupId>
@@ -133,29 +143,22 @@
 			<version>1.4.21</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>5.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.portlet</groupId>
-			<artifactId>portlet-api</artifactId>
-			<version>2.0</version>
+			<groupId>com.liferay.jakarta.portlet</groupId>
+			<artifactId>com.liferay.jakarta.portlet-api</artifactId>
+			<version>4.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- portal-service provided in Liferay 6.x -->
-		<dependency>
-			<groupId>com.liferay.portal</groupId>
-			<artifactId>portal-service</artifactId>
-			<version>6.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- portal kernel provided in Liferay 7.x -->
+		<!-- portal kernel provided in Liferay -->
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>com.liferay.portal.kernel</artifactId>
-			<version>2.21.0</version>
+			<version>166.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
